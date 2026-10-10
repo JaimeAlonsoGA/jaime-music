@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    { "source": "/jaime-2000", "destination": "/jaime2000", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/deezer/:path*", "destination": "https://api.deezer.com/:path*" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
