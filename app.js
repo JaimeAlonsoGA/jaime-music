@@ -126,11 +126,20 @@ function setLang(next) {
   render();
 }
 
+function scrollToTop() {
+  const root = document.documentElement;
+  const previous = root.style.scrollBehavior;
+  root.style.scrollBehavior = "auto";
+  window.scrollTo(0, 0);
+  root.style.scrollBehavior = previous;
+}
+
 function navigate(path) {
   if (path === currentPath()) return;
   history.pushState({}, "", path);
   releaseIndex = 0;
   render();
+  scrollToTop();
 }
 
 function render() {
@@ -197,8 +206,8 @@ function stage(artist) {
         <div class="player">
           ${
             release.spotify
-              ? `<iframe title="${release.title}" src="https://open.spotify.com/embed/album/${release.spotify}?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>`
-              : `<iframe title="${release.title}" src="https://widget.deezer.com/widget/dark/album/${release.deezer}" loading="lazy" allow="encrypted-media; clipboard-write"></iframe>`
+              ? `<iframe title="${release.title}" src="https://open.spotify.com/embed/album/${release.spotify}?utm_source=generator&theme=0" loading="lazy" tabindex="-1" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>`
+              : `<iframe title="${release.title}" src="https://widget.deezer.com/widget/dark/album/${release.deezer}" loading="lazy" tabindex="-1" allow="encrypted-media; clipboard-write"></iframe>`
           }
         </div>
         <nav class="platforms">
@@ -233,6 +242,7 @@ document.addEventListener("click", (event) => {
 window.addEventListener("popstate", () => {
   releaseIndex = 0;
   render();
+  scrollToTop();
 });
 
 async function loadNewReleases() {

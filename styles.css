@@ -140,20 +140,21 @@ footer a:hover { text-decoration: underline; text-underline-offset: 0.25em; }
 
 .home {
   display: grid;
+  justify-items: center;
   gap: 9vh;
   padding: 4vh 4vw 8vh;
 }
 
 .card {
   display: block;
-  width: 100%;
+  width: min(100%, 40rem, 72vh);
   text-decoration: none;
   color: inherit;
 }
 
 .shot,
 .hero {
-  width: min(100%, 40rem, 72vh);
+  width: 100%;
 }
 
 .shot img,
@@ -176,15 +177,18 @@ footer a:hover { text-decoration: underline; text-underline-offset: 0.25em; }
 
 .stage {
   display: grid;
+  justify-items: center;
   gap: 2.5rem;
   padding: 4vh 4vw 8vh;
 }
 
-.hero {
+.hero,
+.panel {
+  width: min(100%, 40rem, 72vh);
   margin: 0;
 }
 
-.panel { padding-top: 0.4rem; }
+main { overflow-anchor: none; }
 
 .eyebrow {
   margin: 0 0 0.7rem;
