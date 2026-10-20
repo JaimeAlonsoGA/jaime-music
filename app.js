@@ -15,6 +15,38 @@ const COPY = {
 
 const ARTISTS = [
   {
+    slug: "jaime2000",
+    name: "Jaime 2000",
+    deezerArtist: "420530972",
+    image: "/img/cover-2000-jaimes.jpg",
+    eyebrow: { es: "indie", en: "indie" },
+    tidal: "https://tidal.com/artist/87677903/u",
+    spotify: "https://open.spotify.com/search/Jaime%202000",
+    apple: "https://music.apple.com/us/artist/jaime-2000/6819618646",
+    releases: [
+      {
+        title: "2000 Jaimes",
+        deezer: "1118608262",
+        cover: "/img/cover-2000-jaimes.jpg",
+      },
+      {
+        title: "Neo-salvation",
+        deezer: "1114778752",
+        cover: "/img/jaime-2000.jpg",
+      },
+      {
+        title: "Aura",
+        deezer: "1114778422",
+        cover: "/img/cover-aura.jpg",
+      },
+      {
+        title: "Me fui, os quiero",
+        deezer: "1114929242",
+        cover: "/img/cover-mefui.jpg",
+      },
+    ],
+  },
+  {
     slug: "spirithz",
     name: "Spirithz",
     deezerArtist: "194659137",
@@ -37,38 +69,11 @@ const ARTISTS = [
     ],
   },
   {
-    slug: "jaime2000",
-    name: "Jaime 2000",
-    deezerArtist: "420530972",
-    image: "/img/jaime-2000.jpg",
-    eyebrow: { es: "indie", en: "indie" },
-    tidal: "https://tidal.com/artist/87677903/u",
-    spotify: "https://open.spotify.com/search/Jaime%202000",
-    apple: "https://music.apple.com/us/artist/jaime-2000/6819618646",
-    releases: [
-      {
-        title: "Neo-salvation",
-        deezer: "1114778752",
-        cover: "/img/jaime-2000.jpg",
-      },
-      {
-        title: "Aura",
-        deezer: "1114778422",
-        cover: "/img/cover-aura.jpg",
-      },
-      {
-        title: "Me fui, os quiero",
-        deezer: "1114929242",
-        cover: "/img/cover-mefui.jpg",
-      },
-    ],
-  },
-  {
     slug: "quarteteuc",
     name: "The Symphonic Quarteteuc",
     deezerArtist: "282398201",
     image: "/img/cover-tavern.jpg",
-    eyebrow: { es: "hashiban", en: "hashiban" },
+    eyebrow: { es: "taberna medieval", en: "medieval tavern" },
     tidal: "https://tidal.com/@quarteteuc",
     spotify: "https://open.spotify.com/search/The%20Symphonic%20Quarteteuc",
     apple: "https://music.apple.com/us/artist/the-symphonic-quarteteuc/1768849532",
@@ -168,9 +173,12 @@ function render() {
 function home() {
   const cards = ARTISTS.map(
     (artist) => `
-      <a class="card" href="/${artist.slug}" data-link="/${artist.slug}">
-        <div class="shot">
-          <img src="${artist.image}" alt="${artist.name}" />
+      <a class="card" href="/${artist.slug}" data-link="/${artist.slug}" data-artist="${artist.slug}">
+        <div class="sleeve">
+          <span class="vinyl" aria-hidden="true"></span>
+          <div class="shot">
+            <img src="${artist.image}" alt="${artist.name}" />
+          </div>
         </div>
         <h2>${artist.name}</h2>
       </a>`
